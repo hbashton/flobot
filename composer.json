@@ -1,0 +1,8 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "danog/madelineproto": "dev-master#f4155bc",
+        "erusev/parsedown": "^1.6",
+        "predis/predis": "dev-master"
+    }
+}
