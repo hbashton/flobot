@@ -1,3 +1,4 @@
 vendor
 *.madeline
 composer.lock
+.env
