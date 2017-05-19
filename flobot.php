@@ -55,7 +55,6 @@ if (!isset($MadelineProto)) {
         'session.madeline'
     );
 }
-<?
 //Include Predis library. See https://github.com/nrk/predis for more info
 require "Predis/Autoloader.php";
 //Connect to Redis
@@ -93,4 +92,3 @@ try {
     echo $e->getMessage();
 }
 $redis->disconnect();
-?>
