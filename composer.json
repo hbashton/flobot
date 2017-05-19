@@ -3,6 +3,9 @@
     "require": {
         "danog/madelineproto": "dev-master#615e3f0",
         "erusev/parsedown": "^1.6",
-        "predis/predis": "dev-master"
+        "predis/predis": "dev-master",
+        "danog/primemodule": "dev-master",
+        "danog/magicalserializer": "dev-master",
+        "phpseclib/phpseclib": "dev-master#200c2a9"
     }
 }
