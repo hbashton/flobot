@@ -71,20 +71,26 @@ catch (Exception $e) {
 	echo "Couldn't connect to Redis";
 	echo $e->getMessage();
 }
-//Get list of all keys. This creates an array of keys from the redis-cli output of "KEYS *"
-$list = $redis->keys("*");
-//Optional: Sort Keys alphabetically
-sort($list);
-//Loop through list of keys
-foreach ($list as $key)
-{
-	//Get Value of Key from Redis
-	$value = $redis->get($key);
-	
-	//Print Key/value Pairs
-	echo "<b>Key:</b> $key <br /><b>Value:</b> $value <br /><br />";
+
+//Get Value of Key from Redis
+$msg_id = $redis->get("msg_id");
+$chat_id = $redis->get("chat_id");
+$chat_ids = $redis->get("chat_ids");
+try {
+    foreach ($chat_ids as $peer) {
+        try {
+            $forwardMessage = $MadelineProto->messages->forwardMessages([
+                'silent' => false,
+                'from_peer' => $chat_id,
+                'id' => [$msg_id],
+                'to_peer' => $peer]
+            );
+        } catch (Exception $e) {
+            echo $e->getMessage ();
+        }
+    }
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
-//Disconnect from Redis
 $redis->disconnect();
 ?>
-}
