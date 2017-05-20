@@ -55,9 +55,6 @@ if (!isset($MadelineProto)) {
         'session.madeline'
     );
 }
-//Include Predis library. See https://github.com/nrk/predis for more info
-require "Predis/Autoloader.php";
-//Connect to Redis
 Predis\Autoloader::register();
 try {
 	$redis = new Predis\Client();
@@ -71,7 +68,6 @@ catch (Exception $e) {
 	echo $e->getMessage();
 }
 
-//Get Value of Key from Redis
 $msg_id = $redis->get("msg_id");
 $chat_id = $redis->get("chat_id");
 $chat_ids = $redis->get("chat_ids");
